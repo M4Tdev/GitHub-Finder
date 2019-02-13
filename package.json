@@ -18,5 +18,10 @@
   },
   "dependencies": {
     "path": "^0.12.7"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
   }
 }
