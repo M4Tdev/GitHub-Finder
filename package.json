@@ -14,5 +14,8 @@
     "babel-loader": "^8.0.5",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3"
+  },
+  "dependencies": {
+    "path": "^0.12.7"
   }
 }
