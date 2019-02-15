@@ -1,0 +1,120 @@
+// Imports
+@import 'reset.scss';
+
+// Variables
+$blue: #2C7CB0;
+$top-barHeight: 80px;
+$box-border: 1px solid rgba(40,40,40, 0.5);
+$box-padding: 15px;
+
+// Mixins
+@mixin container {
+	max-width: 60%;
+	margin: 0 auto;
+}
+
+// Styles
+body {
+	font-family: 'Montserrat', cursive;
+}
+
+.top-bar {
+	width: 100%;
+	height: $top-barHeight;
+	background-color: $blue;
+
+	.container {
+		@include container;
+
+		.logo {
+			font-size: 26px;
+			font-weight: bold;
+			line-height: $top-barHeight;
+			color: white;
+		}
+	}
+}
+
+.main-section {
+	margin-top: 15px;
+
+	.container {
+		@include container;
+
+		.finder-box {
+			width: 100%;
+			border: $box-border;
+			border-radius: 5px;
+			padding: $box-padding;
+			box-sizing: border-box;
+
+			h1 {
+				font-size: 34px;
+				font-weight: bold;
+				margin-bottom: 10px;
+			}
+
+			h3 {
+				font-size: 22px;
+				margin-bottom: 20px;
+			}
+
+			input {
+				height: 26px;
+				width: calc(100% - 12px);
+				font-size: 16px;
+				padding: 0 5px;
+				border-radius: 5px;
+				border: 1px solid rgba(40,40,40, 0.5);
+				outline: none;
+				transition: all .3s ease;
+
+				&:focus {
+					box-shadow: 0 0 5px #282828;
+				}
+			}
+		}
+
+		.user-container {
+
+			.user-info-section {
+				border: $box-border;
+				padding: $box-padding;
+				border-radius: 5px;
+				margin-top: 20px;
+
+				.profile-pic {
+					height: 200px;
+					border-radius: 5px;
+					display: inline-block;
+				}
+
+				.info {
+					display: inline-block;
+					margin-left: 10px;
+
+					.profile-basic-info {
+						margin-bottom: 10px;
+					}
+
+					li {
+						display: inline-block;
+						background-color: $blue;
+						padding: 10px;
+						border-radius: 5px;
+						color: white;
+						margin-right: 10px;
+
+						&:last-child {
+							margin-right: 0;
+						}
+					}
+
+					.profile-info {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+}
