@@ -288,12 +288,20 @@ body {
             align-items: center;
             justify-content: space-between;
 
+            @include mobile {
+              display: block;
+            }
+
             &:nth-child(even) {
               background-color: rgba(40, 40, 40, 0.1);
             }
 
             .repo-info {
               display: inline-block;
+
+              @include mobile {
+                margin-bottom: 8px;
+              }
 
               .repo-name {
                 font-size: 18px;
@@ -313,6 +321,12 @@ body {
               border-radius: 10px;
               text-decoration: none;
               box-sizing: border-box;
+
+              @include mobile {
+                display: block;
+                max-width: 150px;
+                margin: 0 0 0 auto;
+              }
 
               &:hover {
                 background-color: darken($blue, 6);
