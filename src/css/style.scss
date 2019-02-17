@@ -20,19 +20,19 @@ $mobile-view: 350px;
   }
 
   @include tablet {
-    max-width: 85%;
+    width: 85%;
   }
 }
 
 // Media queries
 @mixin tablet {
-  @media (min-width: #{$tablet-view}) and (max-width: #{$desktop-view}) {
+  @media (min-width: #{$tablet-view}) and (max-width: #{$desktop-view - 1px}) {
     @content;
   }
 }
 
 @mixin mobile {
-  @media (min-width: #{$mobile-view}) and (max-width: #{$tablet-view}) {
+  @media (min-width: #{$mobile-view}) and (max-width: #{$tablet-view - 1px}) {
     @content;
   }
 }
@@ -125,13 +125,18 @@ body {
         grid-gap: 10px 10px;
 
         @include mobile {
-          display: grid;
           grid-template-columns: 150px auto;
-          grid-template-rows: auto;
+          grid-template-rows: 150px auto 50px;
+          grid-auto-columns: 150px auto;
+          grid-auto-rows: 150px auto 50px;
+          padding: $box-padding - 5px;
         }
 
-        @include mobile {
-          padding: $box-padding - 5px;
+        @include tablet {
+          grid-template-columns: 170px auto;
+          grid-template-rows: 50px auto 50px;
+          grid-auto-columns: 170px auto;
+          grid-auto-rows: 50px auto 50px;
         }
 
         .profile-pic {
@@ -141,25 +146,34 @@ body {
 
           @include mobile {
             height: 150px;
+            grid-area: 1 / 1 / 2 / 2;
           }
 
           @include tablet {
-            height: 150px;
+            height: 170px;
+            grid-area: 1 / 1 / 3 / 2;
           }
         }
 
         .profile-basic-info {
           display: flex;
-          width: 50%;
-          justify-content: space-evenly;
+          // max-width: 50%;
+          justify-content: flex-start;
           align-items: flex-end;
           grid-area: 1 / 2 / 2 / 3;
 
           @include mobile {
-            width: unset;
+            max-width: unset;
             flex-direction: column;
             justify-content: space-evenly;
             align-items: flex-start;
+            grid-area: 1 / 2 / 2 / 3;
+          }
+
+          @include tablet {
+            max-width: 100%;
+            flex-direction: row;
+            grid-area: 1 / 2 / 2 / 3;
           }
 
           li {
@@ -167,8 +181,10 @@ body {
             padding: 10px;
             border-radius: 5px;
             color: white;
+            margin-right: 5px;
 
-            @include mobile {
+            &:last-child {
+              margin-right: 0;
             }
           }
         }
@@ -178,11 +194,28 @@ body {
           font-size: 18px;
           grid-area: 2 / 2 / 4 / 3;
 
+          @include mobile {
+            margin-left: 0;
+            grid-area: 2 / 1 / 3 / 3;
+          }
+
+          @include tablet {
+            grid-area: 2 / 2 / 3 / 3;
+          }
+
           .table-view {
             border: 1px solid rgba(40, 40, 40, 0.5);
             margin: 5px 0;
             padding: 10px;
             border-radius: 10px;
+
+            @include mobile {
+              padding: 5px;
+            }
+
+            @include tablet {
+              padding: 5px;
+            }
 
             .profile-info-property {
               font-weight: bold;
@@ -203,6 +236,16 @@ body {
           transition: box-shadow 0.1s ease;
           grid-area: 2 / 1 / 3 / 2;
           align-self: end;
+
+          @include mobile {
+            grid-area: 3 / 1 / 4 / 3;
+            align-self: center;
+          }
+
+          @include tablet {
+            grid-area: 3 / 1 / 4 / 3;
+            align-self: center;
+          }
 
           &:hover {
             background-color: darken($blue, 6);
