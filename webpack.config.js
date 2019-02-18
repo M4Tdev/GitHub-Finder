@@ -2,10 +2,10 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/js/index.js',
+  entry: ['@babel/polyfill', './src/js/index.js'],
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist')
   },
   devServer: {
     contentBase: './dist',
@@ -24,7 +24,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env'],
+            presets: ['@babel/preset-env']
           },
         },
       },
@@ -33,7 +33,7 @@ module.exports = {
         use: [
           'style-loader', // creates style nodes from JS strings
           'css-loader', // translates CSS into CommonJS
-          'sass-loader', // compiles Sass to CSS, using Node Sass by default
+          'sass-loader' // compiles Sass to CSS, using Node Sass by default
         ],
       },
     ],
