@@ -104,3 +104,19 @@ export const showRepos = user => {
     repos.insertAdjacentHTML('beforeend', markup);
   }
 };
+
+export const showNotFound = () => {
+  const notFound = document.querySelector('.not-found');
+
+  notFound.classList.add('fadeInDown');
+  notFound.classList.add('active');
+
+  setTimeout(() => {
+    notFound.classList.add('fadeOutUp');
+    notFound.classList.remove('fadeInDown');
+    setTimeout(() => {
+      notFound.classList.remove('active');
+      notFound.classList.remove('fadeOutUp');
+    }, 500);
+  }, 1000);
+};

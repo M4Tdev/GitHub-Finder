@@ -6,7 +6,7 @@ export default class Github {
     this.secret = 'ef2fd8c3eee603341f7dcaab684bc8eaf745fba9';
     this.proxy = 'https://cors-proxify.herokuapp.com/';
     // this.query = query;
-    console.log('Creating new Github search');
+    // console.log('Creating new Github search');
   }
 
   async getUserProfile(user) {
@@ -28,7 +28,7 @@ export default class Github {
       return this.profile;
     } catch (err) {
       Error(err);
-      return 'Not found';
+      return 'User Not Found';
     }
   }
 }
