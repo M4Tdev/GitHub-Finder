@@ -131,6 +131,28 @@ body {
           box-shadow: 0 0 5px #282828;
         }
       }
+
+      .search-bar {
+        position: relative;
+
+        button.search-button {
+          position: absolute;
+          top: 50%;
+          right: 0;
+          transform: translateY(-50%);
+          height: 38px;
+          width: 38px;
+          background-color: rgba(40, 40, 40, 0.2);
+          border: none;
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
+          cursor: pointer;
+
+          i.icon {
+            font-size: 22px;
+          }
+        }
+      }
     }
 
     .user-container {

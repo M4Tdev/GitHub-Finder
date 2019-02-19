@@ -3,20 +3,21 @@ import * as UI from './UI';
 
 require('../css/style.scss');
 
-const searchBar = document.querySelector('#username-input');
+const searchForm = document.querySelector('.search-bar');
 
 const userGithub = new Github();
 
-searchBar.addEventListener('keydown', async e => {
-  if (e.keyCode !== 13) return;
+async function searchUserController(e) {
+  e.preventDefault();
+
+  const input = Array.from(e.target.children).filter(child => child.id.includes('username-input'));
+
   // Taking a text from input
-  const textInput = e.target.value;
+  const textInput = input[0].value;
 
   if (textInput !== '') {
     // Calling method on Github class to get user
     const user = await userGithub.getUserProfile(textInput);
-
-    console.log(user);
 
     if (user !== 'User Not Found') {
       UI.cleanUI();
@@ -30,4 +31,7 @@ searchBar.addEventListener('keydown', async e => {
     // console.log('Cleaning html');
     UI.cleanUI();
   }
-});
+}
+
+// searchButton.addEventListener('click', searchUser);
+searchForm.addEventListener('submit', searchUserController);
