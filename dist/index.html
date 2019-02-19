@@ -12,6 +12,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css"
     />
+    <link
+      href="https://unpkg.com/ionicons@4.5.5/dist/css/ionicons.min.css"
+      rel="stylesheet"
+    />
     <title>GitHub Finder</title>
   </head>
 
@@ -24,17 +28,22 @@
     <!-- end of top-bar -->
     <div class="main-section">
       <div class="container">
-        <div class="not-found animated fadeOutUp">
+        <div class="not-found animated">
           Not found!
         </div>
         <div class="finder-box">
           <h1>Search GitHub Users</h1>
           <h3>Enter a username to fetch a user profile info and repos</h3>
-          <input
-            type="text"
-            id="username-input"
-            placeholder="GitHub username..."
-          />
+          <form class="search-bar">
+            <input
+              type="text"
+              id="username-input"
+              placeholder="GitHub username..."
+            />
+            <button type="submit" class="search-button">
+              <i class="icon ion-md-search"></i>
+            </button>
+          </form>
         </div>
         <div class="user-container">
           <!-- <div class="user-info-section">
