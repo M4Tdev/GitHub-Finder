@@ -10,10 +10,10 @@ const userGithub = new Github();
 async function searchUserController(e) {
   e.preventDefault();
 
-  const input = Array.from(e.target.children).filter(child => child.id.includes('username-input'));
+  const input = Array.from(e.target.children).find(child => child.id.includes('username-input'));
 
   // Taking a text from input
-  const textInput = input[0].value;
+  const textInput = input.value;
 
   if (textInput !== '') {
     // Calling method on Github class to get user
