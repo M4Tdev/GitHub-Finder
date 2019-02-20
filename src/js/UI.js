@@ -1,18 +1,19 @@
+// method to clean whole UI
 export const cleanUI = () => {
   // Selecting div with class of user-container
   const userContainer = document.querySelector('.user-container');
   // Setting user-container div to empty string to clean it
   userContainer.innerHTML = '';
 };
-
+// method displaying UI for user profile
 export const showProfile = user => {
+  // destructuring userProfile from fetched user
   const { userProfile } = user;
-
+  // checking if there is no user
   if (userProfile === undefined) {
     Error('Not found');
     return;
   }
-  console.log(userProfile);
 
   const userContainer = document.querySelector('.user-container');
 
@@ -61,10 +62,10 @@ export const showProfile = user => {
 
   userContainer.insertAdjacentHTML('afterbegin', markup);
 };
-
+// method displaying repos
 export const showRepos = user => {
   const { userRepos } = user;
-
+  // checking if there is no user
   if (userRepos === undefined) {
     Error('Not found');
     return;
@@ -85,7 +86,7 @@ export const showRepos = user => {
   userContainer.insertAdjacentHTML('beforeend', reposSectionMarkup);
 
   const repos = document.querySelector('.repos');
-
+  // looping through all the fetched repos and creating markup for them
   for (const { full_name: fullName, description, html_url: url } of userRepos) {
     const markup = `
 			<div class="repo">
@@ -104,10 +105,10 @@ export const showRepos = user => {
     repos.insertAdjacentHTML('beforeend', markup);
   }
 };
-
+// method to show not found message
 export const showNotFound = () => {
   const notFound = document.querySelector('.not-found');
-
+  // adding some animation classes
   notFound.classList.add('fadeInDown');
   notFound.classList.add('active');
 

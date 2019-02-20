@@ -11,16 +11,17 @@ export default class Github {
 
   async getUserProfile(user) {
     try {
+      // awaiting for axios user data fetch to come back
       const userProfile = await axios.get(
         `${this.proxy}https://api.github.com/users/${user}?client_id=${this.client_id}&client_secret=${this.secret}`
       );
-
+      // awaiting for axios repos data fetch to come back
       const userRepos = await axios.get(
         `${this.proxy}https://api.github.com/users/${user}/repos?page=1&per_page=5&sort=updated&client_id=${
           this.client_id
         }&client_secret=${this.secret}`
       );
-
+      // making object with user data on Github class and returning it
       this.profile = {
         userProfile: userProfile.data,
         userRepos: userRepos.data,
